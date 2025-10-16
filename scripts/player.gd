@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 var speed
 const WALK_SPEED = 5.0
@@ -20,11 +20,11 @@ var gravity = 6
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
-
+@onready var use_label = $Control/UseLabel
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
+	Globals.player = self
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:

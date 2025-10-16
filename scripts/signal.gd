@@ -9,6 +9,8 @@ func _ready() -> void:
 	_create_tween()
 
 func _create_tween():
+	if Globals.has_signal:
+		return
 	if t:
 		t.stop()
 	t = get_tree().create_tween()
@@ -21,4 +23,7 @@ func _process(delta: float) -> void:
 		var point := to_local(raycast.get_collision_point())
 		mesh.mesh.height = point.y
 		mesh.position.y = point.y/2
+		var obj = raycast.get_collider()
+		if obj.is_in_group("satellite"):
+			Globals.has_signal = true
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://f3xai73oj3jr"]
+[gd_scene load_steps=27 format=4 uid="uid://f3xai73oj3jr"]
 
 [ext_resource type="Shader" path="res://shader/moon_floor.gdshader" id="1_j7o1n"]
 [ext_resource type="PackedScene" uid="uid://bcwgw1whgq2tv" path="res://scenes/player.tscn" id="1_rxf3y"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bnja4tppuex7e" path="res://assets/carrier/carrier_Metallic.tga" id="6_6l4nx"]
 [ext_resource type="Texture2D" uid="uid://cpfy47trx5jni" path="res://assets/carrier/carrier_Normal.tga" id="7_k2615"]
 [ext_resource type="PackedScene" uid="uid://x01v5hierosr" path="res://assets/satellite_dish/space_information_dish.glb" id="9_2oo87"]
+[ext_resource type="Script" path="res://scripts/lever.gd" id="11_pmahl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h6ult"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -99,6 +100,18 @@ points = PackedVector3Array(-0.467593, -1.80193, 1.51572, 0.46741, -1.80193, 1.5
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nokc"]
 size = Vector3(3.26353, 5.84167, 3.33841)
 
+[sub_resource type="BoxMesh" id="BoxMesh_uxfwp"]
+size = Vector3(2.28, 3.29, 4.82)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_cgc8l"]
+points = PackedVector3Array(-1.14, -1.645, -2.41, 1.14, -1.645, -2.41, -1.14, -1.645, 2.41, -1.14, 1.645, -2.41, 1.14, 1.645, -2.41, 1.14, -1.645, 2.41, -1.14, 1.645, 2.41, 1.14, 1.645, 2.41)
+
+[sub_resource type="BoxMesh" id="BoxMesh_g3o3u"]
+size = Vector3(1, 5.765, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yg3t4"]
+radius = 4.47357
+
 [node name="MainGame" type="Node3D"]
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_rxf3y")]
@@ -142,11 +155,35 @@ transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, -4.05743, 5.36003, 1
 [node name="093b00e9b67a48aaa5f2fbbcd809419f_3ds" parent="Sketchfab_Scene/Sketchfab_model" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.7669, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["satellite"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0958, 9.94383, 16.6929)
 shape = SubResource("BoxShape3D_5nokc")
+
+[node name="lever" type="StaticBody3D" parent="."]
+script = ExtResource("11_pmahl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lever"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8398, 14.6765)
+mesh = SubResource("BoxMesh_uxfwp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lever"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.8398, 14.6765)
+shape = SubResource("ConvexPolygonShape3D_cgc8l")
+
+[node name="handle" type="StaticBody3D" parent="lever"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.79612, 14.8807)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="lever/handle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57149, 0)
+mesh = SubResource("BoxMesh_g3o3u")
+
+[node name="Area3D" type="Area3D" parent="lever"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="lever/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.05259, 14.7986)
+shape = SubResource("SphereShape3D_yg3t4")
 
 [editable path="carrier"]
 [editable path="Sketchfab_Scene"]
