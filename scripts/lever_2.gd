@@ -23,10 +23,10 @@ func _process(delta: float) -> void:
 	is_moving = player_in and Input.is_action_pressed("interact")
 
 	if is_moving:
-		var offset_z = -(Globals.player.position.z - self.position.z)
+		var offset_z = -(Globals.player.position.x - self.position.x)
 		var target_angle = remap(offset_z, 10, 2, -45, 45)
 		handle_angle = lerp_angle(handle_angle, target_angle, delta * 50)  # 5 = speed multiplier
 		$handle.rotation_degrees = Vector3(handle_angle, 0, 0)
-		var sat_angle = Vector3(handle_angle, satellite.rotation_degrees.y, satellite.rotation_degrees.z)
+		var sat_angle = Vector3(satellite.rotation_degrees.x, handle_angle, satellite.rotation_degrees.z)
 
 		satellite.rotation_degrees = sat_angle
