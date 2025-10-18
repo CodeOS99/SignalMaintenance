@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=4 uid="uid://f3xai73oj3jr"]
+[gd_scene load_steps=31 format=4 uid="uid://f3xai73oj3jr"]
 
 [ext_resource type="Shader" path="res://shader/moon_floor.gdshader" id="1_j7o1n"]
 [ext_resource type="PackedScene" uid="uid://bcwgw1whgq2tv" path="res://scenes/player.tscn" id="1_rxf3y"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://x01v5hierosr" path="res://assets/satellite_dish/space_information_dish.glb" id="9_2oo87"]
 [ext_resource type="Script" path="res://scripts/lever.gd" id="11_pmahl"]
 [ext_resource type="Script" path="res://scripts/lever_2.gd" id="12_2vo3b"]
+[ext_resource type="PackedScene" uid="uid://t0g34n7shggo" path="res://assets/computer/computer.blend" id="13_8d78c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h6ult"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -224,6 +225,9 @@ mesh = SubResource("BoxMesh_g3o3u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="lever2/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.05259, 14.7986)
 shape = SubResource("SphereShape3D_yg3t4")
+
+[node name="computer" parent="." instance=ExtResource("13_8d78c")]
+transform = Transform3D(0.0713058, 0, 0.494889, 0, 0.5, 0, -0.494889, 0, 0.0713058, -28.9595, 4.0954, 15.3373)
 
 [editable path="carrier"]
 [editable path="Sketchfab_Scene"]
