@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcwgw1whgq2tv"]
+[gd_scene load_steps=20 format=3 uid="uid://bcwgw1whgq2tv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hu8ef"]
 [ext_resource type="Script" path="res://scripts/computer_overlay.gd" id="2_8d24e"]
 [ext_resource type="FontFile" uid="uid://boebiafbvibx6" path="res://assets/VT323-Regular.ttf" id="2_uv8xm"]
+[ext_resource type="Script" path="res://scripts/wave_mini_game.gd" id="3_2af60"]
 [ext_resource type="Script" path="res://scripts/target_wave.gd" id="3_h8if3"]
 [ext_resource type="PackedScene" uid="uid://tkk1jk100q44" path="res://scenes/knob.tscn" id="3_wn522"]
 [ext_resource type="Script" path="res://scripts/close_computer_overlay_button.gd" id="3_xrqrf"]
@@ -114,6 +115,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_2af60")
 
 [node name="TargetWave" type="Control" parent="ComputerOverlay/WaveMiniGame"]
 layout_mode = 1
@@ -141,6 +143,18 @@ anchor_bottom = 1.0
 offset_left = 133.0
 offset_top = -0.0240479
 offset_right = -126.072
+offset_bottom = -186.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="OmegaKnob" parent="ComputerOverlay/WaveMiniGame" instance=ExtResource("3_wn522")]
+layout_mode = 1
+anchor_top = 0.713
+anchor_right = 0.225
+anchor_bottom = 1.0
+offset_left = 417.0
+offset_top = -0.0240479
+offset_right = 157.928
 offset_bottom = -186.0
 grow_horizontal = 1
 grow_vertical = 0
