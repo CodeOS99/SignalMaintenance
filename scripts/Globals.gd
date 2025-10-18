@@ -1,5 +1,5 @@
 class_name Globals
 extends Node
 
-static var is_signal: bool = false
+static var is_signal: bool = true
 static var player: Player

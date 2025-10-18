@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://tkk1jk100q44"]
+
+[ext_resource type="Texture2D" uid="uid://cfdmat2daxjs1" path="res://icon.svg" id="1_1c812"]
+[ext_resource type="Script" path="res://scripts/knob.gd" id="1_i7vba"]
+
+[node name="Knob" type="Control"]
+layout_mode = 3
+anchor_right = 0.111
+anchor_bottom = 0.198
+offset_right = 0.127991
+offset_bottom = -0.304016
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i7vba")
+
+[node name="Body" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_1c812")
+
+[node name="Rotator" type="Node2D" parent="."]
+position = Vector2(64, 64)
+
+[node name="Rotator" type="TextureRect" parent="Rotator"]
+offset_left = -16.0
+offset_top = -64.0
+offset_right = 112.0
+offset_bottom = 64.0
+scale = Vector2(0.24, 0.5)
+texture = ExtResource("1_1c812")
+
+[node name="MidPoint" type="Node2D" parent="."]
+position = Vector2(64, 32)

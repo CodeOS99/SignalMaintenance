@@ -1,0 +1,17 @@
+extends Control
+class_name Knob
+
+var following := false
+
+func _process(delta: float) -> void:
+	var mouse_pos = get_global_mouse_position()
+	var mouse_dist_sq = mouse_pos.distance_squared_to(global_position)
+
+	if Input.is_action_just_pressed("click") and mouse_dist_sq <= 16000:
+		following = true
+	elif Input.is_action_just_released("click"):
+		following = false
+
+	if following:
+		var ang := global_position.angle_to_point(mouse_pos) + PI/2
+		$Rotator.rotation = ang
