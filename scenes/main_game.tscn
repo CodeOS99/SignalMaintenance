@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://f3xai73oj3jr"]
+[gd_scene load_steps=33 format=4 uid="uid://f3xai73oj3jr"]
 
 [ext_resource type="Shader" path="res://shader/moon_floor.gdshader" id="1_j7o1n"]
 [ext_resource type="PackedScene" uid="uid://bcwgw1whgq2tv" path="res://scenes/player.tscn" id="1_rxf3y"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scripts/lever.gd" id="11_pmahl"]
 [ext_resource type="Script" path="res://scripts/lever_2.gd" id="12_2vo3b"]
 [ext_resource type="PackedScene" uid="uid://t0g34n7shggo" path="res://assets/computer/computer.blend" id="13_8d78c"]
+[ext_resource type="Script" path="res://scripts/computer.gd" id="14_fi5l5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h6ult"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -119,6 +120,9 @@ size = Vector3(1, 5.765, 1)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yg3t4"]
 radius = 4.47357
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_27i3x"]
+radius = 13.8755
 
 [node name="MainGame" type="Node3D"]
 
@@ -228,6 +232,15 @@ shape = SubResource("SphereShape3D_yg3t4")
 
 [node name="computer" parent="." instance=ExtResource("13_8d78c")]
 transform = Transform3D(0.0713058, 0, 0.494889, 0, 0.5, 0, -0.494889, 0, 0.0713058, -28.9595, 4.0954, 15.3373)
+script = ExtResource("14_fi5l5")
+
+[node name="Area3D" type="Area3D" parent="computer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="computer/Area3D"]
+shape = SubResource("SphereShape3D_27i3x")
+
+[connection signal="body_entered" from="computer/Area3D" to="computer" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="computer/Area3D" to="computer" method="_on_area_3d_body_exited"]
 
 [editable path="carrier"]
 [editable path="Sketchfab_Scene"]

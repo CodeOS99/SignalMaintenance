@@ -21,10 +21,12 @@ var gravity = 6
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var use_label = $Control/UseLabel
+@onready var computer_overlay = $ComputerOverlay
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	Globals.player = self
+	computer_overlay.visible = false
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
