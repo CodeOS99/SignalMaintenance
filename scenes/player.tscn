@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bcwgw1whgq2tv"]
+[gd_scene load_steps=19 format=3 uid="uid://bcwgw1whgq2tv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hu8ef"]
 [ext_resource type="Script" path="res://scripts/computer_overlay.gd" id="2_8d24e"]
@@ -7,12 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://tkk1jk100q44" path="res://scenes/knob.tscn" id="3_wn522"]
 [ext_resource type="Script" path="res://scripts/close_computer_overlay_button.gd" id="3_xrqrf"]
 [ext_resource type="Script" path="res://scripts/resolve_signal_button.gd" id="4_k5k4y"]
+[ext_resource type="Script" path="res://scripts/player_wave.gd" id="4_ox72i"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pccm4"]
 height = 6.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3c7gg"]
 height = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bdbb3"]
+bg_color = Color(1, 0.272236, 0.594702, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7345r"]
+bg_color = Color(1, 0.226886, 0.691843, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_312gh"]
+bg_color = Color(0.665986, 0.470754, 1, 1)
 
 [sub_resource type="Theme" id="Theme_po4q6"]
 default_font = ExtResource("2_uv8xm")
@@ -97,13 +107,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Knob" parent="ComputerOverlay" instance=ExtResource("3_wn522")]
-layout_mode = 1
-offset_left = 191.0
-offset_top = 125.0
-offset_right = 191.128
-offset_bottom = 124.696
-
 [node name="WaveMiniGame" type="Control" parent="ComputerOverlay"]
 layout_mode = 1
 anchors_preset = 15
@@ -120,6 +123,44 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_h8if3")
+
+[node name="PlayerWave" type="Control" parent="ComputerOverlay/WaveMiniGame"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_ox72i")
+
+[node name="AKnob" parent="ComputerOverlay/WaveMiniGame" instance=ExtResource("3_wn522")]
+layout_mode = 1
+anchor_top = 0.713
+anchor_right = 0.225
+anchor_bottom = 1.0
+offset_left = 133.0
+offset_top = -0.0240479
+offset_right = -126.072
+offset_bottom = -186.0
+grow_horizontal = 1
+grow_vertical = 0
+
+[node name="HSlider" type="HSlider" parent="ComputerOverlay/WaveMiniGame"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -412.0
+offset_top = -125.0
+offset_right = -244.0
+offset_bottom = -109.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/slider = SubResource("StyleBoxFlat_bdbb3")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7345r")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_312gh")
 
 [node name="YesSignal" type="Control" parent="ComputerOverlay"]
 visible = false

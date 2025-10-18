@@ -1,6 +1,9 @@
 extends Control
 class_name Knob
 
+@export var min_val: float = 0
+@export var max_val: float = 10
+
 var following := false
 
 func _process(delta: float) -> void:
@@ -15,3 +18,6 @@ func _process(delta: float) -> void:
 	if following:
 		var ang := global_position.angle_to_point(mouse_pos) + PI/2
 		$Rotator.rotation = ang
+
+func get_value():
+	return remap($Rotator.rotation, -3.14, 3.14, min_val-2, max_val-2)
