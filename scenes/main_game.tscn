@@ -132,7 +132,7 @@ shadow_enabled = true
 environment = SubResource("Environment_rh00g")
 
 [node name="Signal" parent="." instance=ExtResource("2_dany8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0449, 41.1574, 16.7566)
+transform = Transform3D(0.993066, -0.0792569, 0.0868241, 0.0868241, 0.992404, -0.0871557, -0.0792569, 0.0940898, 0.992404, -10.0449, 41.1574, 16.7566)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
