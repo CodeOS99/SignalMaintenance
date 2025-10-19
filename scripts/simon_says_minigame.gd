@@ -13,6 +13,12 @@ var curr_round := 0
 	"v": $HBoxContainer/VioletButton
 }
 
+func reset():
+	can_click = false
+	user_in = ""
+	ans = ""
+	curr_round = 0
+
 func make_random(n: int):
 	ans = ""
 	for i in range(n):
@@ -22,7 +28,10 @@ func next_round():
 	can_click = false
 	curr_round += 1
 	if curr_round > rounds:
-		print("Win")# TODO add win!
+		$"../SignalResolved".visible = true
+		$".".visible = false
+		Globals.is_signal = false
+		$"..".resolved = true
 	make_random(curr_round)
 	for c in ans:
 		c_btn_map[c].flash()
@@ -37,11 +46,10 @@ func _process(delta: float) -> void:
 		start()
 
 func add(col):
-	if len(user_in) == len(ans):
-		print("???")
-		return
 	if col != ans[len(user_in)]:
-		print("???")
+		$"../TaskFailed".visible = true
+		$".".visible = false
+		$"..".failed = true
 		return
 	user_in += col
 	if user_in == ans:

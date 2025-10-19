@@ -6,3 +6,15 @@ func _on_pressed() -> void:
 	Globals._signal._create_tween()
 	Globals._signal.rotate_randomly()
 	Globals.is_signal = false
+	
+	$"../../WaveMiniGame".visible = false
+	$"../../SimonSaysMinigame".visible = false
+	$"../../YesSignal".visible = false
+	$"../../NoSignal".visible = false
+	$"..".visible = false
+	$"../../SignalResolved".visible = false
+	
+	$"../..".resolved = false
+	$"../..".failed = false
+	
+	$"../../SimonSaysMinigame".reset()
