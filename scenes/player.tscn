@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bcwgw1whgq2tv"]
+[gd_scene load_steps=29 format=3 uid="uid://bcwgw1whgq2tv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hu8ef"]
 [ext_resource type="Script" path="res://scripts/computer_overlay.gd" id="2_8d24e"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://scripts/close_computer_overlay_button.gd" id="3_xrqrf"]
 [ext_resource type="Script" path="res://scripts/resolve_signal_button.gd" id="4_k5k4y"]
 [ext_resource type="Script" path="res://scripts/player_wave.gd" id="4_ox72i"]
+[ext_resource type="Script" path="res://scripts/simon_says_minigame.gd" id="7_c276w"]
+[ext_resource type="Script" path="res://scripts/simon_button.gd" id="8_dchd4"]
 [ext_resource type="Script" path="res://scripts/resolved_button.gd" id="9_yl62x"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pccm4"]
@@ -25,6 +27,21 @@ bg_color = Color(1, 0.226886, 0.691843, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_312gh"]
 bg_color = Color(0.665986, 0.470754, 1, 1)
+
+[sub_resource type="Theme" id="Theme_f1d0h"]
+default_font = ExtResource("2_uv8xm")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqqmo"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lywm"]
+bg_color = Color(0, 0.85098, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcffk"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym4wg"]
+bg_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Theme" id="Theme_po4q6"]
 default_font = ExtResource("2_uv8xm")
@@ -184,6 +201,81 @@ theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_312gh")
 max_value = 10.0
 step = 0.1
 
+[node name="SimonSaysMinigame" type="Control" parent="ComputerOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_f1d0h")
+script = ExtResource("7_c276w")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ComputerOverlay/SimonSaysMinigame"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -25.5
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="RedButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qqqmo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_qqqmo")
+text = "Red"
+script = ExtResource("8_dchd4")
+
+[node name="GreenButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+theme_override_styles/disabled = SubResource("StyleBoxFlat_3lywm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3lywm")
+text = "GRN"
+script = ExtResource("8_dchd4")
+col = "g"
+
+[node name="BlueButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+theme_override_styles/disabled = SubResource("StyleBoxFlat_tcffk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_tcffk")
+text = "BLU"
+script = ExtResource("8_dchd4")
+col = "b"
+
+[node name="VioletButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
+modulate = Color(0.501961, 0.501961, 0.501961, 1)
+custom_minimum_size = Vector2(90, 90)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 50
+theme_override_styles/disabled = SubResource("StyleBoxFlat_ym4wg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ym4wg")
+text = "VIO"
+script = ExtResource("8_dchd4")
+col = "v"
+
 [node name="YesSignal" type="Control" parent="ComputerOverlay"]
 visible = false
 layout_mode = 1
@@ -309,6 +401,10 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bthgr")
 text = "X"
 script = ExtResource("3_xrqrf")
 
+[connection signal="pressed" from="ComputerOverlay/SimonSaysMinigame/HBoxContainer/RedButton" to="ComputerOverlay/SimonSaysMinigame/HBoxContainer/RedButton" method="_on_pressed"]
+[connection signal="pressed" from="ComputerOverlay/SimonSaysMinigame/HBoxContainer/GreenButton" to="ComputerOverlay/SimonSaysMinigame/HBoxContainer/GreenButton" method="_on_pressed"]
+[connection signal="pressed" from="ComputerOverlay/SimonSaysMinigame/HBoxContainer/BlueButton" to="ComputerOverlay/SimonSaysMinigame/HBoxContainer/BlueButton" method="_on_pressed"]
+[connection signal="pressed" from="ComputerOverlay/SimonSaysMinigame/HBoxContainer/VioletButton" to="ComputerOverlay/SimonSaysMinigame/HBoxContainer/VioletButton" method="_on_pressed"]
 [connection signal="pressed" from="ComputerOverlay/YesSignal/ResolveSignalButton" to="ComputerOverlay/YesSignal/ResolveSignalButton" method="_on_pressed"]
 [connection signal="pressed" from="ComputerOverlay/SignalResolved/ResolvedButton" to="ComputerOverlay/SignalResolved/ResolvedButton" method="_on_pressed"]
 [connection signal="pressed" from="ComputerOverlay/CloseComputerOverlayButton" to="ComputerOverlay/CloseComputerOverlayButton" method="_on_pressed"]
