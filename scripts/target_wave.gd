@@ -1,14 +1,14 @@
 extends Control
 
-var A = 1
+var A = randf_range(2, 7)
 var k = 1
 var t = 0
-var omega = 1
-var phi = 0
+var omega = randf_range(2, 10)
+var phi = randf_range(2, 10)
 var steps = 150
 
 func _process(delta: float) -> void:
-	t += delta
+	t += .01
 	queue_redraw()
 
 func _draw() -> void:

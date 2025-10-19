@@ -9,7 +9,7 @@ var k = 1
 var steps = 150
 
 func _process(delta: float) -> void:
-	t+=delta
+	t+=.01
 	queue_redraw()
 
 func _draw() -> void:
@@ -20,7 +20,7 @@ func _draw() -> void:
 	var y_scale = 25
 	
 	A = $"../AKnob".get_value()
-	phi = $"../HSlider".value
+	phi = $"../PhiSlider".value
 	omega = $"../OmegaKnob".get_value()
 
 	for i in range(1, steps):

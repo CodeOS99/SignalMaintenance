@@ -3,8 +3,16 @@ class_name Knob
 
 @export var min_val: float = 0
 @export var max_val: float = 10
+@export var randomized: bool = false
 
 var following := false
+
+func _ready() -> void:
+	if randomized:
+		randomize_vals()
+
+func randomize_vals():
+	$Rotator.rotation = randf_range(-PI/2, PI/2)
 
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()

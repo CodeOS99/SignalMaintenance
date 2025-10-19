@@ -1,11 +1,13 @@
 extends Control
 
 var steps := 150
-var similarity_threshold := 0.2
+var similarity_threshold := 0.5
 var t = 0
 var f = 0 # flag
 
 func _process(delta: float) -> void:
+	if not Globals.is_signal:
+		return
 	t += delta
 	
 	if compare_waves():
@@ -14,7 +16,10 @@ func _process(delta: float) -> void:
 		f = 0
 	
 	if f >= 10:
-		print(true)
+		$"../SignalResolved".visible = true
+		$".".visible = false
+		Globals.is_signal = false
+		$"..".resolved = true
 
 func compare_waves():
 	var width = get_size().x

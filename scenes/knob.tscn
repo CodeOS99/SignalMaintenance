@@ -21,6 +21,7 @@ texture = ExtResource("1_1c812")
 
 [node name="Rotator" type="Node2D" parent="."]
 position = Vector2(64, 64)
+rotation = -1.5708
 
 [node name="Rotator" type="TextureRect" parent="Rotator"]
 offset_left = -16.0

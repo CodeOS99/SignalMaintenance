@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bcwgw1whgq2tv"]
+[gd_scene load_steps=22 format=3 uid="uid://bcwgw1whgq2tv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hu8ef"]
 [ext_resource type="Script" path="res://scripts/computer_overlay.gd" id="2_8d24e"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://scripts/close_computer_overlay_button.gd" id="3_xrqrf"]
 [ext_resource type="Script" path="res://scripts/resolve_signal_button.gd" id="4_k5k4y"]
 [ext_resource type="Script" path="res://scripts/player_wave.gd" id="4_ox72i"]
+[ext_resource type="Script" path="res://scripts/resolved_button.gd" id="9_yl62x"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pccm4"]
 height = 6.0
@@ -26,6 +27,9 @@ bg_color = Color(1, 0.226886, 0.691843, 1)
 bg_color = Color(0.665986, 0.470754, 1, 1)
 
 [sub_resource type="Theme" id="Theme_po4q6"]
+default_font = ExtResource("2_uv8xm")
+
+[sub_resource type="Theme" id="Theme_wghiu"]
 default_font = ExtResource("2_uv8xm")
 
 [sub_resource type="FontFile" id="FontFile_44y8r"]
@@ -109,6 +113,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="WaveMiniGame" type="Control" parent="ComputerOverlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,8 +163,9 @@ offset_right = 157.928
 offset_bottom = -186.0
 grow_horizontal = 1
 grow_vertical = 0
+max_val = 20.0
 
-[node name="HSlider" type="HSlider" parent="ComputerOverlay/WaveMiniGame"]
+[node name="PhiSlider" type="HSlider" parent="ComputerOverlay/WaveMiniGame"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -175,6 +181,8 @@ grow_vertical = 0
 theme_override_styles/slider = SubResource("StyleBoxFlat_bdbb3")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_7345r")
 theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_312gh")
+max_value = 10.0
+step = 0.1
 
 [node name="YesSignal" type="Control" parent="ComputerOverlay"]
 visible = false
@@ -246,6 +254,45 @@ theme_override_fonts/font = ExtResource("2_uv8xm")
 theme_override_font_sizes/font_size = 75
 text = "NO SIGNAL"
 
+[node name="SignalResolved" type="Control" parent="ComputerOverlay"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_wghiu")
+
+[node name="Label" type="Label" parent="ComputerOverlay/SignalResolved"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -300.0
+offset_right = 300.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 100
+text = "SIGNAL RESOLVED"
+
+[node name="ResolvedButton" type="Button" parent="ComputerOverlay/SignalResolved"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "OK"
+script = ExtResource("9_yl62x")
+
 [node name="CloseComputerOverlayButton" type="Button" parent="ComputerOverlay"]
 layout_mode = 1
 anchors_preset = 1
@@ -263,4 +310,5 @@ text = "X"
 script = ExtResource("3_xrqrf")
 
 [connection signal="pressed" from="ComputerOverlay/YesSignal/ResolveSignalButton" to="ComputerOverlay/YesSignal/ResolveSignalButton" method="_on_pressed"]
+[connection signal="pressed" from="ComputerOverlay/SignalResolved/ResolvedButton" to="ComputerOverlay/SignalResolved/ResolvedButton" method="_on_pressed"]
 [connection signal="pressed" from="ComputerOverlay/CloseComputerOverlayButton" to="ComputerOverlay/CloseComputerOverlayButton" method="_on_pressed"]

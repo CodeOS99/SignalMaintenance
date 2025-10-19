@@ -22,6 +22,7 @@ var gravity = 6
 @onready var camera = $Head/Camera3D
 @onready var use_label = $Control/UseLabel
 @onready var computer_overlay = $ComputerOverlay
+@onready var resolved_screen = $ComputerOverlay/SignalResolved
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
