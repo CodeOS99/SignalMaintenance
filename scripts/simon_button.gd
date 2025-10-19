@@ -4,7 +4,6 @@ signal finished_flash
 @export var col := "r"
 
 func flash():
-	print(":D")
 	var t = get_tree().create_tween()
 	var ti = .03
 	t.tween_property(self, "modulate", Color.WHITE, ti)

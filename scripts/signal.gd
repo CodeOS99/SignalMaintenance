@@ -20,7 +20,6 @@ func rotate_randomly():
 	rotation_degrees = Vector3(randf_range(3, 6), randf_range(3, 6), randf_range(3, 6))
 
 func _process(delta: float) -> void:
-	print(Globals.is_signal)
 	raycast.force_raycast_update()
 	var target_y = -28.3
 	if raycast.is_colliding():
