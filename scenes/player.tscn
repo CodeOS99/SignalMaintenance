@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bcwgw1whgq2tv"]
+[gd_scene load_steps=38 format=3 uid="uid://bcwgw1whgq2tv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hu8ef"]
 [ext_resource type="Script" path="res://scripts/computer_overlay.gd" id="2_8d24e"]
@@ -32,15 +32,42 @@ bg_color = Color(0.665986, 0.470754, 1, 1)
 default_font = ExtResource("2_uv8xm")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqqmo"]
+bg_color = Color(0.685733, 3.10443e-06, 5.77569e-07, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73cxc"]
+bg_color = Color(1, 0.443684, 0.375095, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83dlv"]
 bg_color = Color(1, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lywm"]
+bg_color = Color(0, 0.591824, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ip2k8"]
+bg_color = Color(0.560712, 1, 0.52922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_km8ho"]
 bg_color = Color(0, 0.85098, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcffk"]
 bg_color = Color(0, 0, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhl10"]
+bg_color = Color(1.58831e-06, 0, 0.617782, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wfrfg"]
+bg_color = Color(0.450825, 0.625867, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rcm4m"]
+bg_color = Color(0, 0, 0.619608, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ym4wg"]
+bg_color = Color(0.572216, 0.000237477, 0.572212, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tvqqj"]
+bg_color = Color(1, 0.673091, 0.984413, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3r2y2"]
 bg_color = Color(1, 0, 1, 1)
 
 [sub_resource type="Theme" id="Theme_po4q6"]
@@ -202,6 +229,7 @@ max_value = 10.0
 step = 0.1
 
 [node name="SimonSaysMinigame" type="Control" parent="ComputerOverlay"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -226,52 +254,64 @@ theme_override_constants/separation = 100
 alignment = 1
 
 [node name="RedButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
+modulate = Color(0.273873, 0.273873, 0.273873, 1)
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 theme_override_styles/disabled = SubResource("StyleBoxFlat_qqqmo")
-theme_override_styles/normal = SubResource("StyleBoxFlat_qqqmo")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_qqqmo")
+theme_override_styles/hover = SubResource("StyleBoxFlat_73cxc")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qqqmo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_83dlv")
 text = "Red"
 script = ExtResource("8_dchd4")
 
 [node name="GreenButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
+modulate = Color(0.273873, 0.273873, 0.273873, 1)
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 theme_override_styles/disabled = SubResource("StyleBoxFlat_3lywm")
-theme_override_styles/normal = SubResource("StyleBoxFlat_3lywm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_3lywm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ip2k8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3lywm")
+theme_override_styles/normal = SubResource("StyleBoxFlat_km8ho")
 text = "GRN"
 script = ExtResource("8_dchd4")
 col = "g"
 
 [node name="BlueButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
+modulate = Color(0.273873, 0.273873, 0.273873, 1)
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 theme_override_styles/disabled = SubResource("StyleBoxFlat_tcffk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lhl10")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wfrfg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_rcm4m")
 theme_override_styles/normal = SubResource("StyleBoxFlat_tcffk")
 text = "BLU"
 script = ExtResource("8_dchd4")
 col = "b"
 
 [node name="VioletButton" type="Button" parent="ComputerOverlay/SimonSaysMinigame/HBoxContainer"]
-modulate = Color(0.501961, 0.501961, 0.501961, 1)
+modulate = Color(0.273873, 0.273873, 0.273873, 1)
 custom_minimum_size = Vector2(90, 90)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 50
 theme_override_styles/disabled = SubResource("StyleBoxFlat_ym4wg")
-theme_override_styles/normal = SubResource("StyleBoxFlat_ym4wg")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_ym4wg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tvqqj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ym4wg")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3r2y2")
 text = "VIO"
 script = ExtResource("8_dchd4")
 col = "v"
