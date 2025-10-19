@@ -21,6 +21,9 @@ func _process(delta: float) -> void:
 		Globals.is_signal = false
 		$"..".resolved = true
 		Globals.people_helped += 1
+		$AKnob.rotator.rotation = -PI/2
+		$OmegaKnob.rotator.rotation = -PI/2
+		$PhiSlider.value = 0
 		f = 0
 
 func compare_waves():

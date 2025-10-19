@@ -4,6 +4,7 @@ class_name Knob
 @export var min_val: float = 0
 @export var max_val: float = 10
 @export var randomized: bool = false
+@onready var rotator = $Rotator
 
 var following := false
 
