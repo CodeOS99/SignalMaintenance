@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 		$".".visible = false
 		Globals.is_signal = false
 		$"..".resolved = true
+		Globals.people_helped += 1
 
 func compare_waves():
 	var width = get_size().x

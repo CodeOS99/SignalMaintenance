@@ -32,6 +32,7 @@ func next_round():
 		$".".visible = false
 		Globals.is_signal = false
 		$"..".resolved = true
+		Globals.people_helped += 1
 	make_random(curr_round)
 	for c in ans:
 		c_btn_map[c].flash()

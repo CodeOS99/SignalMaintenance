@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://f3xai73oj3jr"]
+[gd_scene load_steps=34 format=4 uid="uid://f3xai73oj3jr"]
 
 [ext_resource type="Shader" path="res://shader/moon_floor.gdshader" id="1_j7o1n"]
 [ext_resource type="PackedScene" uid="uid://bcwgw1whgq2tv" path="res://scenes/player.tscn" id="1_rxf3y"]
@@ -124,10 +124,13 @@ radius = 4.47357
 [sub_resource type="SphereShape3D" id="SphereShape3D_27i3x"]
 radius = 13.8755
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8sv06"]
+size = Vector3(1, 17.8346, 103.283)
+
 [node name="MainGame" type="Node3D"]
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_rxf3y")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 4.94929, 15)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3676, 4.94929, -9.49932)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -137,7 +140,7 @@ shadow_enabled = true
 environment = SubResource("Environment_rh00g")
 
 [node name="Signal" parent="." instance=ExtResource("2_dany8")]
-transform = Transform3D(0.993066, -0.0792569, 0.0868241, 0.0868241, 0.992404, -0.0871557, -0.0792569, 0.0940898, 0.992404, -10.0449, 41.1574, 16.7566)
+transform = Transform3D(0.993066, -0.0792569, 0.0868241, 0.0868241, 0.992404, -0.0871557, -0.0792569, 0.0940898, 0.992404, -5.03725, 41.1574, -7.74272)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 
@@ -150,7 +153,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConvexPolygonShape3D_ijxnd")
 
 [node name="carrier" parent="." instance=ExtResource("3_ml0em")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.44559, 12.8809, 5.48151)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.3885, 12.8809, -19.0178)
 
 [node name="carrier" parent="carrier" index="0"]
 transform = Transform3D(-5, -7.12149e-14, -4.37114e-07, 0, 5, -8.14604e-07, 4.37114e-07, -8.14604e-07, -5, 0, -5.60733, 15.5161)
@@ -162,7 +165,7 @@ mesh = SubResource("ArrayMesh_oqk3m")
 shape = SubResource("ConvexPolygonShape3D_iw8eu")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("9_2oo87")]
-transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, -4.05743, 5.36003, 16.7695)
+transform = Transform3D(0.11, 0, 0, 0, 0.11, 0, 0, 0, 0.11, 0.950222, 5.36003, -7.72982)
 
 [node name="093b00e9b67a48aaa5f2fbbcd809419f_3ds" parent="Sketchfab_Scene/Sketchfab_model" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.7669, 0, 0)
@@ -175,7 +178,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0958, 9.94383, 16.6929)
 shape = SubResource("BoxShape3D_5nokc")
 
 [node name="lever" type="StaticBody3D" parent="." node_paths=PackedStringArray("satellite")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.56054, -1.13387, 6.51312)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44711, -1.13387, -17.9862)
 script = ExtResource("11_pmahl")
 satellite = NodePath("../Sketchfab_Scene/Sketchfab_model/093b00e9b67a48aaa5f2fbbcd809419f_3ds/f_70m_rev_")
 
@@ -203,7 +206,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.05259, 14.7986)
 shape = SubResource("SphereShape3D_yg3t4")
 
 [node name="lever2" type="StaticBody3D" parent="." node_paths=PackedStringArray("satellite")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.7609, -1.13387, 6.51312)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -19.7533, -1.13387, -17.9862)
 script = ExtResource("12_2vo3b")
 satellite = NodePath("../Sketchfab_Scene/Sketchfab_model/093b00e9b67a48aaa5f2fbbcd809419f_3ds/f_70m_rev_")
 
@@ -231,13 +234,31 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.05259, 14.7986)
 shape = SubResource("SphereShape3D_yg3t4")
 
 [node name="computer" parent="." instance=ExtResource("13_8d78c")]
-transform = Transform3D(0.0713058, 0, 0.494889, 0, 0.5, 0, -0.494889, 0, 0.0713058, -28.9595, 4.0954, 15.3373)
+transform = Transform3D(0.0713058, 0, 0.494889, 0, 0.5, 0, -0.494889, 0, 0.0713058, -23.9519, 4.0954, -9.16197)
 script = ExtResource("14_fi5l5")
 
 [node name="Area3D" type="Area3D" parent="computer"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="computer/Area3D"]
 shape = SubResource("SphereShape3D_27i3x")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.962, 8.4173, 0.568817)
+shape = SubResource("BoxShape3D_8sv06")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.4262, 8.4173, 0.568817)
+shape = SubResource("BoxShape3D_8sv06")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.41763, 8.4173, -49.7495)
+shape = SubResource("BoxShape3D_8sv06")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.41763, 8.4173, 49.4501)
+shape = SubResource("BoxShape3D_8sv06")
 
 [connection signal="body_entered" from="computer/Area3D" to="computer" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="computer/Area3D" to="computer" method="_on_area_3d_body_exited"]

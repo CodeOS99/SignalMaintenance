@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bcwgw1whgq2tv"]
+[gd_scene load_steps=41 format=3 uid="uid://bcwgw1whgq2tv"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_hu8ef"]
 [ext_resource type="Script" path="res://scripts/computer_overlay.gd" id="2_8d24e"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://scripts/simon_says_minigame.gd" id="7_c276w"]
 [ext_resource type="Script" path="res://scripts/simon_button.gd" id="8_dchd4"]
 [ext_resource type="Script" path="res://scripts/resolved_button.gd" id="9_yl62x"]
+[ext_resource type="Script" path="res://scripts/people_helped_label.gd" id="13_frnun"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pccm4"]
 height = 6.0
@@ -99,6 +100,9 @@ bg_color = Color(0.679015, 2.86378e-06, 2.88785e-07, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bthgr"]
 bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_qe8e3"]
+default_font = ExtResource("2_uv8xm")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_hu8ef")
@@ -482,6 +486,15 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_txl1r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bthgr")
 text = "X"
 script = ExtResource("3_xrqrf")
+
+[node name="PeopleHelpedLabel" type="Label" parent="ComputerOverlay"]
+layout_mode = 1
+offset_right = 103.0
+offset_bottom = 17.0
+theme = SubResource("Theme_qe8e3")
+theme_override_font_sizes/font_size = 25
+text = "People Helped: 0"
+script = ExtResource("13_frnun")
 
 [connection signal="pressed" from="ComputerOverlay/SimonSaysMinigame/HBoxContainer/RedButton" to="ComputerOverlay/SimonSaysMinigame/HBoxContainer/RedButton" method="_on_pressed"]
 [connection signal="pressed" from="ComputerOverlay/SimonSaysMinigame/HBoxContainer/GreenButton" to="ComputerOverlay/SimonSaysMinigame/HBoxContainer/GreenButton" method="_on_pressed"]
