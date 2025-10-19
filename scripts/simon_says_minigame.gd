@@ -40,10 +40,10 @@ func add(col):
 	if len(user_in) == len(ans):
 		print("???")
 		return
-	if col != ans[len(user_in)-1]:
+	if col != ans[len(user_in)]:
 		print("???")
 		return
 	user_in += col
-	if user_in == col:
+	if user_in == ans:
 		user_in = ""
 		next_round()
